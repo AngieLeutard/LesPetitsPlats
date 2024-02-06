@@ -1,0 +1,21 @@
+:root {
+    /* Font */
+    --font-anton: "anton";
+    --font-manrope: "manrope";
+
+    --font-title: var(--font-anton);
+    --font-text: var(--font-manrope);
+
+    /* Colors */
+    --black: #1B1B1B;
+    --yellow: #FFD15B;
+    --grey: #7A7A7A;
+    --white: #FFF;
+
+    --text-color: var(--black);
+    --second-text-color: var(--grey);
+    --recipe-time-icon: var(--yellow);
+    --hover-button-color: var(--yellow);
+    --logo-color: var(--white);
+    --header-title-color: var(--yellow);
+}

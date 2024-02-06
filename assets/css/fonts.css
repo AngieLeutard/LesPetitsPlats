@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "anton";
+    src: url("../fonts/Anton/Anton.woff2") format('woff2'),
+         url("../fonts/Anton/Anton.woff") format('woff');
+}
+@font-face {
+    font-family: "manrope";
+    src: url("../fonts/Manrope/Manrope.woff2") format('woff2'),
+         url("../fonts/Manrope/Manrope.woff") format('woff');
+}
