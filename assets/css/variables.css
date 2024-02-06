@@ -15,7 +15,10 @@
     --text-color: var(--black);
     --second-text-color: var(--grey);
     --recipe-time-icon: var(--yellow);
+    --button-color: var(--black);
+    --button-icon: var(--white);
     --hover-button-color: var(--yellow);
+    --hover-button-icon: var(--black);
     --logo-color: var(--white);
     --header-title-color: var(--yellow);
 }
