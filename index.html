@@ -27,9 +27,66 @@
       </div>
     </header>
     <main>
+      <section class="filters_section">
+        <div class="filters_wrapper">
+          <details class='textBox_wrapper'>
+            <summary class='textBox_title'>
+              <span class="sort_title">Ingrédients</span>
+              <span class="summary-chevron-up">
+                <span class="fa-solid fa-chevron-down"></span>
+              </span>
+              <span class="summary-chevron-down">
+                <span class="fa-solid fa-chevron-up"></span>
+              </span>
+            </summary>
+            <ul class='textBox_description'>
+              <input type="text" name="" id="" class="search_input">
+              <li class="link_container" id="sortByLikes" tabindex="0" aria-label="trier par popularité">Popularité</li>
+              <li class="link_container" id="sortByDates" tabindex="0" aria-label="trier par date">Date</li>
+              <li class="link_container link_container_title" id="sortByTitles" tabindex="0" aria-label="trier par titre">Titre</li>
+            </ul>
+          </details>
+          <details class='textBox_wrapper'>
+            <summary class='textBox_title'>
+              <span class="sort_title">Appareils</span>
+              <span class="summary-chevron-up">
+                <span class="fa-solid fa-chevron-down"></span>
+              </span>
+              <span class="summary-chevron-down">
+                <span class="fa-solid fa-chevron-up"></span>
+              </span>
+            </summary>
+            <ul class='textBox_description'>
+              <input type="text" name="" id="" class="search_input">
+              <li class="link_container" tabindex="0">Popularité</li>
+              <li class="link_container" tabindex="0">Date</li>
+              <li class="link_container" tabindex="0">Titre</li>
+            </ul>
+          </details>
+          <details class='textBox_wrapper'>
+            <summary class='textBox_title'>
+              <span class="sort_title">Ustensiles</span>
+              <span class="summary-chevron-up">
+                <span class="fa-solid fa-chevron-down"></span>
+              </span>
+              <span class="summary-chevron-down">
+                <span class="fa-solid fa-chevron-up"></span>
+              </span>
+            </summary>
+            <ul class='textBox_description'>
+              <input type="text" name="" id="" class="search_input">
+              <li class="link_container" id="sortByLikes" tabindex="0" aria-label="trier par popularité">Popularité</li>
+              <li class="link_container" id="sortByDates" tabindex="0" aria-label="trier par date">Date</li>
+              <li class="link_container link_container_title" id="sortByTitles" tabindex="0" aria-label="trier par titre">Titre</li>
+            </ul>
+          </details>
+        </div>
+        <p class="total_recipes"></p>
+      </section>
       <section class="recipes_cards_wrapper"></section>
     </main>
     <script src="./recipes.js"></script>
     <script src="./cards.js"></script>
+    <script src="./filters.js"></script>
   </body>
 </html>
