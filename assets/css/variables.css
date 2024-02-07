@@ -11,6 +11,9 @@
     --yellow: #FFD15B;
     --grey: #7A7A7A;
     --white: #FFF;
+    --bg-grey: #EDEDED;
+
+    --bg-color: var(--bg-grey);
 
     --text-color: var(--black);
     --second-text-color: var(--grey);
