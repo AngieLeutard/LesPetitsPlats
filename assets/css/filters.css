@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 55px;
+    margin-bottom: 21px;
 }
 
 .total_recipes {
@@ -84,29 +84,59 @@ details[open] .textBox_wrapper {
 .textBox_description {
     display: flex;
     flex-direction: column;
-    gap: 13px;
     position: absolute;
     z-index: 1;
-    bottom: -245px;
-    width: 163px;
+    bottom: -241px;
+    width: 195px;
     max-height: 259px;
     overflow: scroll;
-    margin: 0;
     background-color: var(--white);   
     border-radius: 0 0 11px 11px;
     cursor: pointer;
-    padding: 16px;
+    padding-bottom: 15px;
+    padding-top: 9px;
+}
+
+.list_item_wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 16px;
+}
+
+.list_item_wrapper:hover, .list_item_wrapper:hover .link_container {
+    background-color: var(--header-title-color);
+}
+
+.selected {
+    background-color: var(--header-title-color);
 }
 
 .link_container {
     font-family: var(--font-text);
     color: var(--text-color);
     font-size: 14px;
+    text-transform: capitalize;
+}
+
+.link_container_selected {
+    font-family: var(--font-text);
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: capitalize;
+    background-color: var(--header-title-color);
+}
+.unselect {
+    display: none;
+    z-index: 3;
 }
 
 .search_wrapper {
-    width: 100%;
+    width: 163px;
     position: relative;
+    margin-bottom: 11px;
+    padding-left: 16px;
 }
 
 .search_input {
@@ -129,4 +159,27 @@ details[open] .textBox_wrapper {
 .search_button_icon {
     font-size: 20px;
     color: var(--grey);
+}
+
+/* Stickers section */
+
+.stickers_section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 55px;
+    gap: 21px;
+}
+
+.sticker_wrapper {
+    display: flex;
+    background-color: var(--header-title-color);
+    border-radius: 10px;
+    padding: 17px 18px;
+    width: 159px;
+    justify-content: space-between;
+}
+
+.sticker_text {
+    font-family: var(--font-text);
+    text-transform: capitalize;
 }
