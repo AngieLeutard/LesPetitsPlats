@@ -129,7 +129,7 @@ details[open] .textBox_wrapper {
 }
 .unselect {
     display: none;
-    z-index: 3;
+    z-index: 4;
 }
 
 .search_wrapper {

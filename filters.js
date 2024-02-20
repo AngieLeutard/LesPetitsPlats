@@ -14,6 +14,51 @@ function removeDuplicates(data) {
     return data.filter((value, index) => data.indexOf(value) === index);
 }
 
+// Yellow sticker function
+
+function createNewSticker(name) {
+    
+    let sticker_wrapper = document.createElement("div");
+    sticker_wrapper.classList.add("sticker_wrapper");
+    let sticker_text = document.createElement("p");
+    sticker_text.classList.add("sticker_text");
+    let sticker_unselect = document.createElement("span");
+    sticker_unselect.classList.add("sticker_unselect");
+
+    sticker_wrapper.appendChild(sticker_text);
+    sticker_wrapper.appendChild(sticker_unselect);
+
+    sticker_text.innerHTML = name;
+    sticker_unselect.innerHTML = (`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+    <circle cx="8.5" cy="8.5" r="8.5" fill="black"/>
+    <path d="M11 11L8.5 8.5M8.5 8.5L6 6M8.5 8.5L11 6M8.5 8.5L6 11" stroke="#FFD15B" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`);
+
+    let section = document.querySelector(".stickers_section");
+    section.appendChild(sticker_wrapper);
+
+}
+
+// Filter selected function
+
+function selectedSticker(e_li, e_wrapper, unselect) {
+    e_li.classList.remove("link_container");
+    e_li.classList.add("link_container_selected");
+
+    e_wrapper.classList.add("selected");
+
+    unselect.style.display = "flex";
+}
+
+function unselectedSticker(e_li, e_wrapper, unselect) {
+    e_li.classList.add("link_container");
+    e_li.classList.remove("link_container_selected");
+
+    e_wrapper.classList.remove("selected");
+
+    unselect.style.display = "none";
+}
+
 // Arrays for filters
 
 let ig_tableau = new Array();
@@ -25,7 +70,7 @@ let reduce_ap_tableau = new Array();
 let us_tableau = new Array();
 let reduce_us_tableau = new Array();
 
-// Filters 
+// Filters reducer
 
 recipes.map((recipe) => {
 
@@ -53,32 +98,9 @@ recipes.map((recipe) => {
 
 })
 
-// filters choices 
+// Ingredients filter
 
 let ing_list = document.querySelector(".ingredient_select");
-let app_list = document.querySelector(".appliance_select");
-let ust_list = document.querySelector(".ustensil_select");
-
-// function createNewSticker() {
-//     // create new sticker
-
-//     let sticker_wrapper = document.createElement("div");
-//     let sticker_text = document.createElement("p");
-//     let sticker_unselect = document.createElement("span");
-
-//     sticker_wrapper.appendChild(sticker_text);
-//     sticker_wrapper.appendChild(sticker_unselect);
-
-//     sticker_text.innerHTML = e;
-//     sticker_unselect.innerHTML = (`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-//     <circle cx="8.5" cy="8.5" r="8.5" fill="black"/>
-//     <path d="M11 11L8.5 8.5M8.5 8.5L6 6M8.5 8.5L11 6M8.5 8.5L6 11" stroke="#FFD15B" stroke-linecap="round" stroke-linejoin="round"/>
-//     </svg>`);
-
-//     let section = document.querySelector(".stickers_section");
-//     section.appendChild(sticker_wrapper);
-// }
-
 
 reduce_ig_tableau.forEach((e) => {
 
@@ -100,37 +122,36 @@ reduce_ig_tableau.forEach((e) => {
 
     ing_list.appendChild(ing_wrapper);
 
-    ing_wrapper.addEventListener("click", () => {
-        ingredient_li.classList.remove("link_container");
-        ingredient_li.classList.add("link_container_selected");
+    ingredient_li.addEventListener("click", () => {
 
-        ing_wrapper.classList.add("selected");
-
-        unselect.style.display = "flex";
+        // select element
+        selectedSticker(ingredient_li, ing_wrapper, unselect);
 
         // create new sticker
+        createNewSticker(e);
 
-        let sticker_wrapper = document.createElement("div");
-        sticker_wrapper.classList.add("sticker_wrapper");
-        let sticker_text = document.createElement("p");
-        sticker_text.classList.add("sticker_text");
-        let sticker_unselect = document.createElement("span");
-        sticker_unselect.classList.add("sticker_unselect");
+        let stickerIcon = document.querySelector(".sticker_unselect");
 
-        sticker_wrapper.appendChild(sticker_text);
-        sticker_wrapper.appendChild(sticker_unselect);
+        stickerIcon.addEventListener("click", () => {
+            // unselect sticker element 
+            unselectedSticker(ingredient_li, ing_wrapper, unselect);
+            sticker.remove();
+        });
 
-        sticker_text.innerHTML = e;
-        sticker_unselect.innerHTML = (`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <circle cx="8.5" cy="8.5" r="8.5" fill="black"/>
-        <path d="M11 11L8.5 8.5M8.5 8.5L6 6M8.5 8.5L11 6M8.5 8.5L6 11" stroke="#FFD15B" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`);
+        let sticker = document.querySelector(".sticker_wrapper");
 
-        let section = document.querySelector(".stickers_section");
-        section.appendChild(sticker_wrapper);
+        unselect.addEventListener("click", () => {
+            // unselect element
+            unselectedSticker(ingredient_li, ing_wrapper, unselect);
+            sticker.remove();
+        });
+    });
 
-    })
 });
+
+// Appliance filter
+
+let app_list = document.querySelector(".appliance_select");
 
 reduce_ap_tableau.forEach((e) => {
 
@@ -152,36 +173,35 @@ reduce_ap_tableau.forEach((e) => {
 
     app_list.appendChild(app_wrapper);
 
-    app_wrapper.addEventListener("click", () => {
-        appliance_li.classList.remove("link_container");
-        appliance_li.classList.add("link_container_selected");
+    appliance_li.addEventListener("click", () => {
 
-        app_wrapper.classList.add("selected");
-
-        unselect.style.display = "flex";
+        // select element
+        selectedSticker(appliance_li, app_wrapper, unselect);
 
         // create new sticker
+        createNewSticker(e)
 
-        let sticker_wrapper = document.createElement("div");
-        sticker_wrapper.classList.add("sticker_wrapper");
-        let sticker_text = document.createElement("p");
-        sticker_text.classList.add("sticker_text");
-        let sticker_unselect = document.createElement("span");
-        sticker_unselect.classList.add("sticker_unselect");
+        let stickerIcon = document.querySelector(".sticker_unselect");
 
-        sticker_wrapper.appendChild(sticker_text);
-        sticker_wrapper.appendChild(sticker_unselect);
+        stickerIcon.addEventListener("click", () => {
+            // unselect sticker element 
+            unselectedSticker(appliance_li, app_wrapper, unselect);
+            sticker.remove();
+        });
 
-        sticker_text.innerHTML = e;
-        sticker_unselect.innerHTML = (`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <circle cx="8.5" cy="8.5" r="8.5" fill="black"/>
-        <path d="M11 11L8.5 8.5M8.5 8.5L6 6M8.5 8.5L11 6M8.5 8.5L6 11" stroke="#FFD15B" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`);
+        let sticker = document.querySelector(".sticker_wrapper");
 
-        let section = document.querySelector(".stickers_section");
-        section.appendChild(sticker_wrapper);
+        unselect.addEventListener("click", () => {
+            // unselect element
+            unselectedSticker(appliance_li, app_wrapper, unselect);
+            sticker.remove();
+        });
     })
 });
+
+// Ustensils filter
+
+let ust_list = document.querySelector(".ustensil_select");
 
 reduce_us_tableau.forEach((e) => {
     
@@ -203,33 +223,27 @@ reduce_us_tableau.forEach((e) => {
 
     ust_list.appendChild(ust_wrapper);
 
-    ust_wrapper.addEventListener("click", () => {
-        ustensil_li.classList.remove("link_container");
-        ustensil_li.classList.add("link_container_selected");
-
-        ust_wrapper.classList.add("selected");
-
-        unselect.style.display = "flex";
+    ustensil_li.addEventListener("click", () => {
+        // select element
+        selectedSticker(ustensil_li, ust_wrapper, unselect);
 
         // create new sticker
+        createNewSticker(e)
 
-        let sticker_wrapper = document.createElement("div");
-        sticker_wrapper.classList.add("sticker_wrapper");
-        let sticker_text = document.createElement("p");
-        sticker_text.classList.add("sticker_text");
-        let sticker_unselect = document.createElement("span");
-        sticker_unselect.classList.add("sticker_unselect");
+        // element de la list unselect
+        let sticker = document.querySelector(".sticker_wrapper");
 
-        sticker_wrapper.appendChild(sticker_text);
-        sticker_wrapper.appendChild(sticker_unselect);
+        unselect.addEventListener("click", () => {
+            unselectedSticker(ustensil_li, ust_wrapper, unselect);
+            sticker.remove();
+        });
 
-        sticker_text.innerHTML = e;
-        sticker_unselect.innerHTML = (`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-        <circle cx="8.5" cy="8.5" r="8.5" fill="black"/>
-        <path d="M11 11L8.5 8.5M8.5 8.5L6 6M8.5 8.5L11 6M8.5 8.5L6 11" stroke="#FFD15B" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>`);
+        // etiquettes jaune unselect
 
-        let section = document.querySelector(".stickers_section");
-        section.appendChild(sticker_wrapper);
+        let stickerIcon = document.querySelector(".sticker_unselect");
+        stickerIcon.addEventListener("click", () => {
+            unselectedSticker(ustensil_li, ust_wrapper, unselect);
+            sticker.remove();
+        });
     })
 });
