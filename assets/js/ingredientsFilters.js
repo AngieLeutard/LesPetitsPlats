@@ -24,6 +24,8 @@ reduce_ig_tableau.forEach((e) => {
 
     ingredient_li.addEventListener("click", () => {
 
+        filterByIngredients(e);
+
         // select element
         selectedSticker(ingredient_li, ing_wrapper, unselect);
 

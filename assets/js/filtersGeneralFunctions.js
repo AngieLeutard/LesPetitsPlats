@@ -46,3 +46,24 @@ function filterByAppliance(value) {
     });
     console.log(reduced_recipes);
 }
+
+function filterByUstensils(value) {
+    let reduced_recipes = recipes.filter(function(recipe) {
+        let ustensils = recipe.ustensils;
+        return ustensils.find((us) => us == value) == value; 
+    });
+    console.log(reduced_recipes);
+}
+
+function filterByIngredients(value) {
+    let reduced_recipes = recipes.filter(function(recipe) {
+        let ingredients = recipe.ingredients;
+        ingredients.map((obj) => {
+            let ing = obj.ingredient;
+            console.log(ing)
+            return ing == value;
+        })
+    });
+    console.log(reduced_recipes);
+}
+

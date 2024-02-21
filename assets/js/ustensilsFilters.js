@@ -23,6 +23,9 @@ reduce_us_tableau.forEach((e) => {
     ust_list.appendChild(ust_wrapper);
 
     ustensil_li.addEventListener("click", () => {
+
+        filterByUstensils(e);
+
         // select element
         selectedSticker(ustensil_li, ust_wrapper, unselect);
 
