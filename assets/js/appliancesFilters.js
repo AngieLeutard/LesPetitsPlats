@@ -1,14 +1,14 @@
 // Appliance filter
 
-let app_list = document.querySelector(".appliance_select");
+let appliance_list = document.querySelector(".appliance_select");
 
-reduce_ap_tableau.forEach((e) => {
+reduce_ap_tableau.forEach((selected_value) => {
 
-    let app_wrapper = document.createElement("div");
-    app_wrapper.classList.add("list_item_wrapper");
-    let appliance_li = document.createElement("li");
-    appliance_li.classList.add("link_container");
-    appliance_li.innerHTML = e;
+    let appliances_wrapper = document.createElement("div");
+    appliances_wrapper.classList.add("list_item_wrapper");
+    let appliance = document.createElement("li");
+    appliance.classList.add("link_container");
+    appliance.innerHTML = selected_value;
 
     let unselect = document.createElement("span");
     unselect.innerHTML = (`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
@@ -17,36 +17,35 @@ reduce_ap_tableau.forEach((e) => {
     </svg>`);
     unselect.classList.add("unselect");
 
-    app_wrapper.appendChild(appliance_li);
-    app_wrapper.appendChild(unselect);
+    appliances_wrapper.appendChild(appliance);
+    appliances_wrapper.appendChild(unselect);
 
-    app_list.appendChild(app_wrapper);
+    appliance_list.appendChild(appliances_wrapper);
 
-    appliance_li.addEventListener("click", () => {
+    appliance.addEventListener("click", () => {
 
-        filterByAppliance(e);
+        filterByAppliance(selected_value);
         removeCards();
 
         // select element
-        selectedSticker(appliance_li, app_wrapper, unselect);
+        selectedSticker(appliance, appliances_wrapper, unselect);
 
         // create new sticker
-        createNewSticker(e)
+        createNewSticker(selected_value)
 
-        let stickerIcon = document.querySelector(".sticker_unselect");
+        let sticker_icon = document.querySelector(".sticker_unselect");
 
-        stickerIcon.addEventListener("click", () => {
+        sticker_icon.addEventListener("click", () => {
             // unselect sticker element 
-            unselectedSticker(appliance_li, app_wrapper, unselect);
+            unselectedSticker(appliance, appliances_wrapper, unselect);
             sticker.remove();
-            displayRecipesGallery(recipes);
         });
 
         let sticker = document.querySelector(".sticker_wrapper");
 
         unselect.addEventListener("click", () => {
             // unselect element
-            unselectedSticker(appliance_li, app_wrapper, unselect);
+            unselectedSticker(appliance, appliances_wrapper, unselect);
             sticker.remove();
             displayRecipesGallery(recipes);
         });

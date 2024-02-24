@@ -1,14 +1,14 @@
 // Ustensils filter
 
-let ust_list = document.querySelector(".ustensil_select");
+let ustensils_list = document.querySelector(".ustensil_select");
 
-reduce_us_tableau.forEach((e) => {
+reduce_us_tableau.forEach((selected_value) => {
     
-    let ust_wrapper = document.createElement("div");
-    ust_wrapper.classList.add("list_item_wrapper");
-    let ustensil_li = document.createElement("li");
-    ustensil_li.classList.add("link_container");
-    ustensil_li.innerHTML = e;
+    let ustensils_wrapper = document.createElement("div");
+    ustensils_wrapper.classList.add("list_item_wrapper");
+    let ustensil = document.createElement("li");
+    ustensil.classList.add("link_container");
+    ustensil.innerHTML = selected_value;
 
     let unselect = document.createElement("span");
     unselect.innerHTML = (`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
@@ -17,34 +17,34 @@ reduce_us_tableau.forEach((e) => {
     </svg>`);
     unselect.classList.add("unselect");
 
-    ust_wrapper.appendChild(ustensil_li);
-    ust_wrapper.appendChild(unselect);
+    ustensils_wrapper.appendChild(ustensil);
+    ustensils_wrapper.appendChild(unselect);
 
-    ust_list.appendChild(ust_wrapper);
+    ustensils_list.appendChild(ustensils_wrapper);
 
-    ustensil_li.addEventListener("click", () => {
+    ustensil.addEventListener("click", () => {
 
-        filterByUstensils(e);
+        filterByUstensils(selected_value);
 
         // select element
-        selectedSticker(ustensil_li, ust_wrapper, unselect);
+        selectedSticker(ustensil, ustensils_wrapper, unselect);
 
         // create new sticker
-        createNewSticker(e)
+        createNewSticker(selected_value)
 
         // element de la list unselect
         let sticker = document.querySelector(".sticker_wrapper");
 
         unselect.addEventListener("click", () => {
-            unselectedSticker(ustensil_li, ust_wrapper, unselect);
+            unselectedSticker(ustensil, ustensils_wrapper, unselect);
             sticker.remove();
         });
 
         // etiquettes jaune unselect
 
-        let stickerIcon = document.querySelector(".sticker_unselect");
-        stickerIcon.addEventListener("click", () => {
-            unselectedSticker(ustensil_li, ust_wrapper, unselect);
+        let sticker_icon = document.querySelector(".sticker_unselect");
+        sticker_icon.addEventListener("click", () => {
+            unselectedSticker(ustensil, ustensils_wrapper, unselect);
             sticker.remove();
         });
     })

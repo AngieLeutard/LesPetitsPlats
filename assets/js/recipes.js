@@ -1,3 +1,6 @@
+// recipes[0].appliance // blender
+// recipes[0].ustensils[0] // cuillere à soupe
+// recipes[0].ingredients[0].ingredient 
 const recipes = [
     {
         "id": 1,

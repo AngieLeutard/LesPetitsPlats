@@ -1,6 +1,7 @@
 let card_wrapper = document.querySelector(".recipes_cards_wrapper");
 
 function displayRecipesGallery(arr) {
+    removeCards()
     arr.map((recipe) => {
 
         // card

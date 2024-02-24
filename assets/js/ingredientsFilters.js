@@ -1,14 +1,14 @@
 // Ingredients filter
 
-let ing_list = document.querySelector(".ingredient_select");
+let ingredients_list = document.querySelector(".ingredient_select");
 
-reduce_ig_tableau.forEach((e) => {
+reduce_ig_tableau.forEach((selected_value) => {
 
-    let ing_wrapper = document.createElement("div");
-    ing_wrapper.classList.add("list_item_wrapper");
-    let ingredient_li = document.createElement("li");
-    ingredient_li.classList.add("link_container");
-    ingredient_li.innerHTML = e;
+    let ingredients_wrapper = document.createElement("div");
+    ingredients_wrapper.classList.add("list_item_wrapper");
+    let ingredient = document.createElement("li");
+    ingredient.classList.add("link_container");
+    ingredient.innerHTML = selected_value;
 
     let unselect = document.createElement("span");
     unselect.innerHTML = (`<svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
@@ -17,26 +17,26 @@ reduce_ig_tableau.forEach((e) => {
     </svg>`);
     unselect.classList.add("unselect");
 
-    ing_wrapper.appendChild(ingredient_li);
-    ing_wrapper.appendChild(unselect);
+    ingredients_wrapper.appendChild(ingredient);
+    ingredients_wrapper.appendChild(unselect);
 
-    ing_list.appendChild(ing_wrapper);
+    ingredients_list.appendChild(ingredients_wrapper);
 
-    ingredient_li.addEventListener("click", () => {
+    ingredient.addEventListener("click", () => {
 
-        filterByIngredients(e);
+        updateIngredientsToFilter(selected_value);
 
         // select element
-        selectedSticker(ingredient_li, ing_wrapper, unselect);
+        selectedSticker(ingredient, ingredients_wrapper, unselect);
 
         // create new sticker
-        createNewSticker(e);
+        createNewSticker(selected_value);
 
-        let stickerIcon = document.querySelector(".sticker_unselect");
+        let sticker_icon = document.querySelector(".sticker_unselect");
 
-        stickerIcon.addEventListener("click", () => {
+        sticker_icon.addEventListener("click", () => {
             // unselect sticker element 
-            unselectedSticker(ingredient_li, ing_wrapper, unselect);
+            unselectedSticker(ingredient, ingredients_wrapper, unselect);
             sticker.remove();
         });
 
@@ -44,7 +44,7 @@ reduce_ig_tableau.forEach((e) => {
 
         unselect.addEventListener("click", () => {
             // unselect element
-            unselectedSticker(ingredient_li, ing_wrapper, unselect);
+            unselectedSticker(ingredient, ingredients_wrapper, unselect);
             sticker.remove();
         });
     });
