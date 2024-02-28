@@ -1,29 +1,25 @@
-let inputSearchBar = document.getElementById("input_searchBar");
+let input_searchBar = document.getElementById("input_searchBar");
+let searchBar_button = document.getElementById("searchBar_button");
 
-inputSearchBar.addEventListener("change", (e) => {
-    let input_searchBar_value = e.target.value;
-    console.log(input_searchBar_value);
+let input_searchBar_value = "";
+
+input_searchBar.addEventListener("change", (e) => {
+    input_searchBar_value = e.target.value;
+    console.log(input_searchBar_value)
+    if (input_searchBar_value >= 3) {
+        
+    }
 });
 
-// function searchRecipe() {
+searchBar_button.addEventListener("click", () => {
+   
+})
 
-//     inputSearchBar.addEventListener("change", (e) => {
-//         let input_searchBar_value = e.target.value;
-//         console.log(input_searchBar_value);
+// Le système recherche des recettes correspondant à l’entrée utilisateur dans : le
+// titre de la recette, la liste des ingrédients de la recette, la description de la
+// recette.
 
-//         if (input_searchBar_value = ingredient) {
+// Au fur et à mesure du remplissage les mots clés ne correspondant pas à la
+// frappe dans le champ disparaissent. Par exemple, si l’utilisateur entre “coco” dans
+// la liste d’ingrédients, seuls vont rester “noix de coco” et “lait de coco”.
 
-//             filterByIngredients(input_searchBar_value)
-    
-//         } else if (input_searchBar_value = appliance) {
-    
-//             filterByAppliance(input_searchBar_value)
-    
-//         } else if (input_searchBar_value = ustensils) {
-    
-//             filterByUstensils(input_searchBar_value)
-    
-//         }
-//     });
-    
-// }

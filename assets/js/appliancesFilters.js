@@ -24,8 +24,7 @@ reduce_ap_tableau.forEach((selected_value) => {
 
     appliance.addEventListener("click", () => {
 
-        filterByAppliance(selected_value);
-        removeCards();
+        updateAppliancesToFilter(selected_value);
 
         // select element
         selectedSticker(appliance, appliances_wrapper, unselect);
@@ -36,18 +35,17 @@ reduce_ap_tableau.forEach((selected_value) => {
         let sticker_icon = document.querySelector(".sticker_unselect");
 
         sticker_icon.addEventListener("click", () => {
-            // unselect sticker element 
             unselectedSticker(appliance, appliances_wrapper, unselect);
             sticker.remove();
+            updateAppliancesToFilter()
         });
 
         let sticker = document.querySelector(".sticker_wrapper");
 
         unselect.addEventListener("click", () => {
-            // unselect element
             unselectedSticker(appliance, appliances_wrapper, unselect);
             sticker.remove();
-            displayRecipesGallery(recipes);
+            updateAppliancesToFilter()
         });
     })
 });

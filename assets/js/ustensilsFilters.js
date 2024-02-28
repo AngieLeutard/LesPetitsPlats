@@ -24,7 +24,7 @@ reduce_us_tableau.forEach((selected_value) => {
 
     ustensil.addEventListener("click", () => {
 
-        filterByUstensils(selected_value);
+        updateUstensilsToFilter(selected_value);
 
         // select element
         selectedSticker(ustensil, ustensils_wrapper, unselect);
@@ -38,14 +38,15 @@ reduce_us_tableau.forEach((selected_value) => {
         unselect.addEventListener("click", () => {
             unselectedSticker(ustensil, ustensils_wrapper, unselect);
             sticker.remove();
+            removeUstensilsToFilter(selected_value);
         });
 
-        // etiquettes jaune unselect
-
         let sticker_icon = document.querySelector(".sticker_unselect");
+
         sticker_icon.addEventListener("click", () => {
             unselectedSticker(ustensil, ustensils_wrapper, unselect);
             sticker.remove();
+            removeUstensilsToFilter(selected_value);
         });
     })
 });

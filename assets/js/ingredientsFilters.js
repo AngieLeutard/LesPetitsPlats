@@ -29,23 +29,23 @@ reduce_ig_tableau.forEach((selected_value) => {
         // select element
         selectedSticker(ingredient, ingredients_wrapper, unselect);
 
-        // create new sticker
+        // yellow sticker
         createNewSticker(selected_value);
 
         let sticker_icon = document.querySelector(".sticker_unselect");
 
         sticker_icon.addEventListener("click", () => {
-            // unselect sticker element 
             unselectedSticker(ingredient, ingredients_wrapper, unselect);
             sticker.remove();
+            removeIngredientsToFilter(selected_value)
         });
 
         let sticker = document.querySelector(".sticker_wrapper");
 
         unselect.addEventListener("click", () => {
-            // unselect element
             unselectedSticker(ingredient, ingredients_wrapper, unselect);
             sticker.remove();
+            removeIngredientsToFilter(selected_value)
         });
     });
 

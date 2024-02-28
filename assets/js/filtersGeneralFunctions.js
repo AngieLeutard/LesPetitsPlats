@@ -36,6 +36,7 @@ function unselectedSticker(element, element_wrapper, unselect) {
     element.classList.remove("link_container_selected");
     element_wrapper.classList.remove("selected");
     unselect.style.display = "none";
+    displayRecipesGallery(recipes);
 }
 
 // Filtrage des recettes
@@ -47,45 +48,43 @@ function filterByAppliance(recipes, value) {
     return reduced_recipes;
 }
 
-function filterByUstensils(recipes, value) {
+function filterByUstensils(recipes, ustensilsToFilter) {
     let reduced_recipes = recipes.filter(function(recipe) {
         let ustensils = recipe.ustensils;
-        return ustensils.find((us) => us == value) == value; 
+        return ustensilsToFilter.every((ustensil) => ustensils.includes(ustensil)); 
     });
-
     return reduced_recipes;
 }
 
-function filterByIngredients(recipes, value) {
+function filterByIngredients(recipes, ingredientsToFilter) {
     let reduced_recipes = recipes.filter(function(recipe) {
-        console.log(value)
-        let ingredients = recipe.ingredients;
-        let reduced_ingredients = ingredients.find((ingredient) => ingredient.ingredient == value);
-        if (reduced_ingredients) {
-            return reduced_ingredients.ingredient == value;
-        }
-        return false;
+        let ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient);
+        console.log(ingredients)
+        return ingredientsToFilter.every((ingredient) => ingredients.includes(ingredient));
     });
-
     return reduced_recipes;
 }
 
-function filterRecipes(recipes, ingredients, appliance, ustensils, searchInput) {
+function filterWithInputValue(recipes, value) {
+    let reduced_recipes = recipes.filter(function(recipe) {
+        
+    });
+    return reduced_recipes;
+}
+
+function filterRecipes(recipes, ingredients, appliance, ustensils, inputValue) {
     let reduced_recipes = recipes;
     if (ingredients.length > 0) {
-        reduced_recipes = ingredients.map((ingredient) => filterByIngredients(reduced_recipes, ingredient))[0];
+        reduced_recipes = filterByIngredients(reduced_recipes, ingredients);
     }
     if (appliance) {
         reduced_recipes = filterByAppliance(reduced_recipes, appliance);
-
     }
     if (ustensils.length > 0) {
-        reduced_recipes = ustensils.map((ustensil) => filterByUstensils(reduced_recipes, ustensil))[0];
-
+        reduced_recipes = filterByUstensils(reduced_recipes, ustensils);
     }
-    if (searchInput) {
-        
+    if (inputValue != "") {
+        reduced_recipes = filterWithInputValue(reduced_recipes, inputValue);
     }
-
     return reduced_recipes
 }
