@@ -59,17 +59,21 @@ function filterByUstensils(recipes, ustensilsToFilter) {
 function filterByIngredients(recipes, ingredientsToFilter) {
     let reduced_recipes = recipes.filter(function(recipe) {
         let ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient);
-        console.log(ingredients)
         return ingredientsToFilter.every((ingredient) => ingredients.includes(ingredient));
     });
     return reduced_recipes;
 }
 
-function filterWithInputValue(recipes, value) {
+function filterWithInputValue(recipes, inputValue) {
     let reduced_recipes = recipes.filter(function(recipe) {
-        
+        return (
+            recipe.name.includes(inputValue) ||
+            recipe.description.includes(inputValue) ||
+            recipe.ingredients.some(ingredient => ingredient.ingredient.includes(inputValue))
+        );
     });
     return reduced_recipes;
+
 }
 
 function filterRecipes(recipes, ingredients, appliance, ustensils, inputValue) {

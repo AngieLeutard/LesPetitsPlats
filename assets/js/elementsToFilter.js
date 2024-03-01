@@ -1,6 +1,7 @@
 let ingredientsToFilter = [];
 let applianceToFilter = "";
 let ustensilsToFilter = [];
+let inputValueToFilter = "";
 
 // add element to filter
 
@@ -19,6 +20,11 @@ function updateUstensilsToFilter(ustensil) {
     updateRecipes();
 }
 
+function updateInputValueToFilter(inputValue) {
+    inputValueToFilter = inputValue;
+    updateRecipes();
+}
+
 // remove element to filter
 
 function removeIngredientsToFilter(ingredient) {
@@ -32,7 +38,10 @@ function removeUstensilsToFilter(ustensil) {
 }
 
 function updateRecipes() {
-    let recipesToDisplay = filterRecipes(recipes, ingredientsToFilter, applianceToFilter, ustensilsToFilter, "");
+    let recipesToDisplay = filterRecipes(recipes, ingredientsToFilter, applianceToFilter, ustensilsToFilter, inputValueToFilter);
     console.log(recipesToDisplay);
     displayRecipesGallery(recipesToDisplay);
+    displayTotalRecipes(recipesToDisplay.length);
+    filterReducer(recipesToDisplay);
+    displayIngredientsFilters(reduce_filterIngredients);
 }

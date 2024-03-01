@@ -12,12 +12,9 @@ input_searchBar.addEventListener("change", (e) => {
 });
 
 searchBar_button.addEventListener("click", () => {
-   
+    updateInputValueToFilter(input_searchBar_value);
 })
 
-// Le système recherche des recettes correspondant à l’entrée utilisateur dans : le
-// titre de la recette, la liste des ingrédients de la recette, la description de la
-// recette.
 
 // Au fur et à mesure du remplissage les mots clés ne correspondant pas à la
 // frappe dans le champ disparaissent. Par exemple, si l’utilisateur entre “coco” dans

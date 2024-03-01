@@ -2,7 +2,7 @@
 
 let ustensils_list = document.querySelector(".ustensil_select");
 
-reduce_us_tableau.forEach((selected_value) => {
+reduce_filterUstensils.forEach((selected_value) => {
     
     let ustensils_wrapper = document.createElement("div");
     ustensils_wrapper.classList.add("list_item_wrapper");
