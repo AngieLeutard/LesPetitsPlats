@@ -6,12 +6,16 @@ let input_searchBar_value = "";
 input_searchBar.addEventListener("change", (e) => {
     input_searchBar_value = e.target.value;
     console.log(input_searchBar_value)
-    if (input_searchBar_value >= 3) {
+    // if (input_searchBar_value >= 3) {
         
-    }
+    // }
 });
 
 searchBar_button.addEventListener("click", () => {
+    removeFiltersIngredients()
+    removeFiltersAppliances()
+    removeFiltersUstensils()
+
     updateInputValueToFilter(input_searchBar_value);
 })
 

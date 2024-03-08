@@ -4,20 +4,19 @@ function removeDuplicates(data) {
     return data.filter((value, index) => data.indexOf(value) === index);
 }
 
-// Arrays for filters
-
-let filterIngredients = new Array();
-let reduce_filterIngredients = new Array();
-
-let filterAppliances = new Array();
-let reduce_filterAppliances = new Array();
-
-let filterUstensils = new Array();
-let reduce_filterUstensils = new Array();
-
 // Filters reducer
 
 function filterReducer(arrayToReduce) {
+
+    let filterIngredients = new Array();
+    let reduce_filterIngredients = new Array();
+
+    let filterAppliances = new Array();
+    let reduce_filterAppliances = new Array();
+
+    let filterUstensils = new Array();
+    let reduce_filterUstensils = new Array();
+
     arrayToReduce.map((recipe) => {
         // Ingredients
         let ingredients = recipe.ingredients;
@@ -41,5 +40,7 @@ function filterReducer(arrayToReduce) {
             reduce_filterUstensils = removeDuplicates(filterUstensils);
         })
     });
+
+    return [reduce_filterIngredients, reduce_filterAppliances, reduce_filterUstensils];
 }
 

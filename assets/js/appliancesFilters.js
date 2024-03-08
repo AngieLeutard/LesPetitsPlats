@@ -2,11 +2,9 @@
 
 let appliance_list = document.querySelector(".appliance_select");
 
-function displayAppliancesFilters(array) {
+function displayAppliancesFilters(recipesArray) {
 
-    removeFiltersAppliances()
-
-    array.forEach((selected_value) => {
+    recipesArray.forEach((selected_value) => {
 
         let appliances_wrapper = document.createElement("div");
         appliances_wrapper.classList.add("list_item_wrapper", "list_item_appliances");
@@ -57,5 +55,5 @@ function displayAppliancesFilters(array) {
 
 function removeFiltersAppliances() {
     let filtersToRemove = document.querySelectorAll(".list_item_appliances");
-    filtersToRemove.forEach((filter) => filter.remove())
+    filtersToRemove.forEach((filter) => filter.remove());
 }

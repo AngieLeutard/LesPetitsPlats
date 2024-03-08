@@ -97,9 +97,10 @@ function displayRecipesGallery(arr) {
 window.addEventListener("load", () => {
     displayRecipesGallery(recipes);
     displayTotalRecipes(recipes.length);
-    filterReducer(recipes);
-    displayIngredientsFilters(reduce_filterIngredients);
-    displayAppliancesFilters(reduce_filterAppliances);
+    let reduced_filters = filterReducer(recipes);
+    displayIngredientsFilters(reduced_filters[0]);
+    displayAppliancesFilters(reduced_filters[1]);
+    displayUstensilsFilters(reduced_filters[2]);
 });
 
 function removeCards() {
