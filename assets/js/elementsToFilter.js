@@ -39,7 +39,6 @@ function removeUstensilsToFilter(ustensil) {
     updateRecipes();
 }
 
-
 function updateRecipes() {
     recipesToDisplay = filterRecipes(recipes, ingredientsToFilter, applianceToFilter, ustensilsToFilter, inputValueToFilter);
     displayRecipesGallery(recipesToDisplay);

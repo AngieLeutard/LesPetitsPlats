@@ -52,8 +52,3 @@ function displayAppliancesFilters(recipesArray) {
         })
     });
 }
-
-function removeFiltersAppliances() {
-    let filtersToRemove = document.querySelectorAll(".list_item_appliances");
-    filtersToRemove.forEach((filter) => filter.remove());
-}

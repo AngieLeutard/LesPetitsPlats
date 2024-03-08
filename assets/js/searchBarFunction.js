@@ -1,26 +1,75 @@
-let input_searchBar = document.getElementById("input_searchBar");
-let searchBar_button = document.getElementById("searchBar_button");
+// General SearchBar
 
-let input_searchBar_value = "";
+let general_input_searchBar = document.getElementById("general_searchBar");
+let general_searchBar_button = document.getElementById("general_searchBar_button");
 
-input_searchBar.addEventListener("change", (e) => {
-    input_searchBar_value = e.target.value;
-    console.log(input_searchBar_value)
+let general_input_searchBar_value = "";
+
+general_input_searchBar.addEventListener("change", (e) => {
+    general_input_searchBar_value = e.target.value;
     // if (input_searchBar_value >= 3) {
         
     // }
 });
 
-searchBar_button.addEventListener("click", () => {
+general_searchBar_button.addEventListener("click", () => {
     removeFiltersIngredients()
     removeFiltersAppliances()
     removeFiltersUstensils()
 
-    updateInputValueToFilter(input_searchBar_value);
+    updateInputValueToFilter(general_input_searchBar_value);
 })
 
+// Filters searchBar
 
-// Au fur et à mesure du remplissage les mots clés ne correspondant pas à la
-// frappe dans le champ disparaissent. Par exemple, si l’utilisateur entre “coco” dans
-// la liste d’ingrédients, seuls vont rester “noix de coco” et “lait de coco”.
+let ingredients_input_searchBar = document.getElementById("ingredients_searchBar");
+let appliances_input_searchBar = document.getElementById("appliances_searchBar");
+let ustensils_input_searchBar = document.getElementById("ustensils_searchBar");
 
+let ingredients_input_searchBar_button = document.getElementById("ingredients_searchBar_button");
+let appliances_input_searchBar_button = document.getElementById("appliances_searchBar_button");
+let ustensils_input_searchBar_button = document.getElementById("ustensils_searchBar_button");
+
+let ingredients_input_searchBar_value = "";
+let appliances_input_searchBar_value = "";
+let ustensils_input_searchBar_value = "";
+
+// Get value
+
+ingredients_input_searchBar.addEventListener("change", (e) => {
+    ingredients_input_searchBar_value = e.target.value;
+});
+
+appliances_input_searchBar.addEventListener("change", (e) => {
+    appliances_input_searchBar_value = e.target.value;
+});
+
+ustensils_input_searchBar.addEventListener("change", (e) => {
+    ustensils_input_searchBar_value = e.target.value;
+});
+
+// EventListener 
+
+ingredients_input_searchBar_button.addEventListener("click", () => {
+    let reduced_filters = filterReducer(recipes);
+    let results = reduced_filters[0].filter((ingredient) => ingredient.toLowerCase().includes(ingredients_input_searchBar_value));
+    removeFiltersIngredients()
+    displayIngredientsFilters(results);
+    console.log(results)
+});
+
+appliances_input_searchBar_button.addEventListener("click", () => {
+    let reduced_filters = filterReducer(recipes);
+    let results = reduced_filters[1].filter((appliance) => appliance.toLowerCase().includes(appliances_input_searchBar_value));
+    removeFiltersAppliances()
+    displayAppliancesFilters(results);
+    console.log(results)
+});
+
+ustensils_input_searchBar_button.addEventListener("click", () => {
+    let reduced_filters = filterReducer(recipes);
+    let results = reduced_filters[2].filter((ustensil) => ustensil.toLowerCase().includes(ustensils_input_searchBar_value));
+    removeFiltersUstensils()
+    displayUstensilsFilters(results);
+    console.log(results)
+});

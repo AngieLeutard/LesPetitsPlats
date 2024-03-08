@@ -148,6 +148,7 @@ details[open] .textBox_wrapper {
     border-radius: 2px;
     border: solid 1px var(--bg-grey);
     padding: 0;
+    padding-left: 5px;
     font-family: var(--font-text);
     color: var(--text-color);
     font-size: 14px;

@@ -52,8 +52,3 @@ function displayIngredientsFilters(recipesArray) {
         });
     });
 }
-
-function removeFiltersIngredients() {
-    let filtersToRemove = document.querySelectorAll(".list_item_ingredients");
-    filtersToRemove.forEach((filter) => filter.remove())
-}

@@ -1,4 +1,4 @@
-// Yellow sticker function
+// Yellow tag function
 
 function createNewSticker(name) {
     
@@ -73,7 +73,6 @@ function filterWithInputValue(recipes, inputValue) {
         );
     });
     return reduced_recipes;
-
 }
 
 function filterRecipes(recipes, ingredients, appliance, ustensils, inputValue) {
@@ -91,4 +90,21 @@ function filterRecipes(recipes, ingredients, appliance, ustensils, inputValue) {
         reduced_recipes = filterWithInputValue(reduced_recipes, inputValue);
     }
     return reduced_recipes
+}
+
+// Remove filters
+
+function removeFiltersIngredients() {
+    let filtersToRemove = document.querySelectorAll(".list_item_ingredients");
+    filtersToRemove.forEach((filter) => filter.remove())
+}
+
+function removeFiltersAppliances() {
+    let filtersToRemove = document.querySelectorAll(".list_item_appliances");
+    filtersToRemove.forEach((filter) => filter.remove());
+}
+
+function removeFiltersUstensils() {
+    let filtersToRemove = document.querySelectorAll(".list_item_ustensils");
+    filtersToRemove.forEach((filter) => filter.remove())
 }

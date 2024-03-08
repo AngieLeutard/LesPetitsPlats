@@ -53,8 +53,3 @@ function displayUstensilsFilters(recipesArray) {
         })
     });
 }
-
-function removeFiltersUstensils() {
-    let filtersToRemove = document.querySelectorAll(".list_item_ustensils");
-    filtersToRemove.forEach((filter) => filter.remove())
-}
