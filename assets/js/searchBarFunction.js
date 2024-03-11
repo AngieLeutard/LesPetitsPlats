@@ -2,14 +2,12 @@
 
 let general_input_searchBar = document.getElementById("general_searchBar");
 let general_searchBar_button = document.getElementById("general_searchBar_button");
-
+let general_ul_searchBar = document.getElementById('suggestions');
+let general_input_searchBar_x_button = document.getElementById('header_input_button');
 let general_input_searchBar_value = "";
 
 general_input_searchBar.addEventListener("change", (e) => {
     general_input_searchBar_value = e.target.value;
-    // if (input_searchBar_value >= 3) {
-        
-    // }
 });
 
 general_searchBar_button.addEventListener("click", () => {
@@ -18,6 +16,44 @@ general_searchBar_button.addEventListener("click", () => {
     removeFiltersUstensils()
 
     updateInputValueToFilter(general_input_searchBar_value);
+})
+    
+general_input_searchBar.addEventListener('input', changeAutoComplete);
+general_ul_searchBar.addEventListener('click', selectItem);
+  
+function changeAutoComplete({ target }) {
+    let data = target.value;
+    general_ul_searchBar.innerHTML = ``;
+    general_input_searchBar_x_button.style.display = "block";
+    if (data.length >= 3) {
+    let autoCompleteValues = autoComplete(data);
+    autoCompleteValues.forEach(value => { addItem(value); });
+    }
+}
+
+function autoComplete(inputValue) {
+    let reduced_filters = filterReducer(recipes);
+    return reduced_filters[0].filter(
+        (value) => value.toLowerCase().includes(inputValue.toLowerCase())
+    );
+}
+
+function addItem(value) {
+    general_ul_searchBar.innerHTML = general_ul_searchBar.innerHTML + `<li>${value}</li>`;
+}
+
+function selectItem({ target }) {
+    if (target.tagName === 'LI') {
+    general_input_searchBar.value = target.textContent;
+    general_ul_searchBar.innerHTML = ``;
+    }
+}
+
+general_input_searchBar_x_button.addEventListener("click", () => {
+    general_input_searchBar_value = "";
+    general_input_searchBar.value = general_input_searchBar_value;
+    general_ul_searchBar.innerHTML = ``;
+    general_input_searchBar_x_button.style.display = "none";
 })
 
 // Filters searchBar

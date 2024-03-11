@@ -1,3 +1,7 @@
+*:focus {
+outline: none;
+}
+
 .header_wrapper {
     display: flex;
     flex-direction: column;
@@ -56,6 +60,24 @@
     border: none;
     padding: 0;
     padding-left: 35px;
+    z-index: 1;
+}
+
+.header_input_button {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    right: 70px;
+    width: 51px;
+    height: 52px;
+    border: none;
+    border-radius: 10px;
+    z-index: 2; 
+}
+
+.header_input_icon {
+    font-size: 20px;
+    color: var(--second-text-color);
 }
 
 .header_search_button {
@@ -67,6 +89,7 @@
     border: none;
     border-radius: 10px;
     background-color: var(--button-color);
+    z-index: 2;
 }
 
 .header_search_button_icon {
@@ -77,4 +100,22 @@
 .header_search_button:hover, .header_search_button:hover .header_search_button_icon {
     background-color: var(--hover-button-color);
     color: var(--hover-button-icon);
+}
+
+.suggestions_wrapper {
+    position: absolute;
+    padding: 20px;
+    padding-top: 40px;
+    top: 174px;
+    width: 914px;
+    background-color: white;
+    border-radius: 0 0 11px 11px;
+    font-family: var(--font-text);
+}
+
+.suggestions_wrapper li {
+    font-size: 14px;
+    padding-top: 5px;
+    padding-top: 5px;
+    cursor: pointer;
 }
