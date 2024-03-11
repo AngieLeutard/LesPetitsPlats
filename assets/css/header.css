@@ -105,12 +105,14 @@ outline: none;
 .suggestions_wrapper {
     position: absolute;
     padding: 20px;
-    padding-top: 40px;
-    top: 174px;
+    top: 220px;
     width: 914px;
-    background-color: white;
     border-radius: 0 0 11px 11px;
     font-family: var(--font-text);
+}
+
+.suggestions_wrapper_bg {
+    background-color: white;
 }
 
 .suggestions_wrapper li {

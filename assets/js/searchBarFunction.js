@@ -26,14 +26,20 @@ function changeAutoComplete({ target }) {
     general_ul_searchBar.innerHTML = ``;
     general_input_searchBar_x_button.style.display = "block";
     if (data.length >= 3) {
-    let autoCompleteValues = autoComplete(data);
-    autoCompleteValues.forEach(value => { addItem(value); });
+        let autoCompleteValues = autoComplete(data);
+        autoCompleteValues.forEach(value => { addItem(value); });
+        general_ul_searchBar.classList.add("suggestions_wrapper_bg")
+    } else {
+        general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
+        general_input_searchBar_x_button.style.display = "none";
     }
 }
 
 function autoComplete(inputValue) {
     let reduced_filters = filterReducer(recipes);
-    return reduced_filters[0].filter(
+    let suggestionsArray = [];
+    suggestionsArray = reduced_filters[0].concat(reduced_filters[3], reduced_filters[4]);
+    return suggestionsArray.filter(
         (value) => value.toLowerCase().includes(inputValue.toLowerCase())
     );
 }
@@ -44,8 +50,15 @@ function addItem(value) {
 
 function selectItem({ target }) {
     if (target.tagName === 'LI') {
-    general_input_searchBar.value = target.textContent;
-    general_ul_searchBar.innerHTML = ``;
+        general_input_searchBar.value = target.textContent;
+        general_ul_searchBar.innerHTML = ``;
+        general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
+
+        removeFiltersIngredients()
+        removeFiltersAppliances()
+        removeFiltersUstensils()
+
+        updateInputValueToFilter(general_input_searchBar_value);
     }
 }
 
@@ -54,6 +67,9 @@ general_input_searchBar_x_button.addEventListener("click", () => {
     general_input_searchBar.value = general_input_searchBar_value;
     general_ul_searchBar.innerHTML = ``;
     general_input_searchBar_x_button.style.display = "none";
+    general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
+    displayRecipesGallery(recipes);
+    displayTotalRecipes(recipes.length);
 })
 
 // Filters searchBar
