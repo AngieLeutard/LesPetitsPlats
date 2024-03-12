@@ -16,6 +16,10 @@ general_searchBar_button.addEventListener("click", () => {
     removeFiltersUstensils()
 
     updateInputValueToFilter(general_input_searchBar_value);
+
+    general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
+    general_ul_searchBar.innerHTML = ``;
+
 })
     
 general_input_searchBar.addEventListener('input', changeAutoComplete);
@@ -38,7 +42,7 @@ function changeAutoComplete({ target }) {
 function autoComplete(inputValue) {
     let reduced_filters = filterReducer(recipes);
     let suggestionsArray = [];
-    suggestionsArray = reduced_filters[0].concat(reduced_filters[3], reduced_filters[4]);
+    suggestionsArray = reduced_filters[0].concat(reduced_filters[3]);
     return suggestionsArray.filter(
         (value) => value.toLowerCase().includes(inputValue.toLowerCase())
     );
@@ -54,10 +58,6 @@ function selectItem({ target }) {
         general_ul_searchBar.innerHTML = ``;
         general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
 
-        removeFiltersIngredients()
-        removeFiltersAppliances()
-        removeFiltersUstensils()
-
         updateInputValueToFilter(general_input_searchBar_value);
     }
 }
@@ -68,8 +68,7 @@ general_input_searchBar_x_button.addEventListener("click", () => {
     general_ul_searchBar.innerHTML = ``;
     general_input_searchBar_x_button.style.display = "none";
     general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
-    displayRecipesGallery(recipes);
-    displayTotalRecipes(recipes.length);
+    updateInputValueToFilter("")
 })
 
 // Filters searchBar

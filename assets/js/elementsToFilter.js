@@ -43,7 +43,11 @@ function updateRecipes() {
     recipesToDisplay = filterRecipes(recipes, ingredientsToFilter, applianceToFilter, ustensilsToFilter, inputValueToFilter);
     displayRecipesGallery(recipesToDisplay);
     displayTotalRecipes(recipesToDisplay.length);
+    removeFiltersIngredients();
+    removeFiltersAppliances();
+    removeFiltersUstensils();
     let reduced_filters = filterReducer(recipesToDisplay);
+    console.log(reduced_filters)
     displayIngredientsFilters(reduced_filters[0]);
     displayAppliancesFilters(reduced_filters[1]);
     displayUstensilsFilters(reduced_filters[2]);

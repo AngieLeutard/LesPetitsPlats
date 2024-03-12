@@ -39,14 +39,14 @@ function displayIngredientsFilters(recipesArray) {
             sticker_icon.addEventListener("click", () => {
                 unselectedSticker(ingredient, ingredients_wrapper, unselect);
                 sticker.remove();
-                removeIngredientsToFilter(selected_value)
+                removeIngredientsToFilter()
             });
     
             let sticker = document.querySelector(".sticker_wrapper");
     
             unselect.addEventListener("click", () => {
                 unselectedSticker(ingredient, ingredients_wrapper, unselect);
-                sticker.remove();
+                sticker.remove(selected_value);
                 removeIngredientsToFilter(selected_value)
             });
         });
