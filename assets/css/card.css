@@ -86,3 +86,8 @@
     font-size: 14px;
     color: var(--second-text-color);
 }
+
+.errorText {
+    font-family: var(--font-text);
+    font-size: 22px;
+}

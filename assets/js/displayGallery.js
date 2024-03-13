@@ -92,6 +92,10 @@ function displayRecipesGallery(arr) {
     
         card_wrapper.appendChild(card);
     })
+
+    if(arr.length == 0) {
+        emptyGallery(general_input_searchBar_value)
+    }
 }
 
 window.addEventListener("load", () => {
@@ -106,5 +110,18 @@ window.addEventListener("load", () => {
 function removeCards() {
     let cardsToRemove = document.querySelectorAll(".recipe_card");
     cardsToRemove.forEach((card) => card.remove())
+}
+
+function emptyGallery(inputValue) {
+    let errorText = document.createElement("p");
+    errorText.classList.add("errorText");
+    errorText.textContent = `Aucune recette ne contient "${inputValue}", vous pouvez chercher "tarte aux pommes", "poisson", etc.`
+
+    card_wrapper.appendChild(errorText)
+}
+
+function removeErrorText() {
+    let errorText = document.querySelector(".errorText");
+    errorText.remove()
 }
 

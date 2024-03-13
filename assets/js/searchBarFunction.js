@@ -19,7 +19,6 @@ general_searchBar_button.addEventListener("click", () => {
 
     general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
     general_ul_searchBar.innerHTML = ``;
-
 })
     
 general_input_searchBar.addEventListener('input', changeAutoComplete);
@@ -69,6 +68,7 @@ general_input_searchBar_x_button.addEventListener("click", () => {
     general_input_searchBar_x_button.style.display = "none";
     general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
     updateInputValueToFilter("")
+    removeErrorText()
 })
 
 // Filters searchBar
