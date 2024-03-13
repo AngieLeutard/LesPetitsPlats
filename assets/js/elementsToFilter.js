@@ -30,13 +30,21 @@ function updateInputValueToFilter(inputValue) {
 // remove element to filter
 
 function removeIngredientsToFilter(ingredient) {
-    ingredientsToFilter.splice(ingredient);
+    ingredientsToFilter = ingredientsToFilter.filter(item => item !== ingredient)
     updateRecipes();
+    console.log(ingredientsToFilter)
+}
+
+function removeAppliancesToFilter() {
+    applianceToFilter = "";
+    updateRecipes();
+    console.log(applianceToFilter)
 }
 
 function removeUstensilsToFilter(ustensil) {
-    ustensilsToFilter.splice(ustensil);
+    ustensilsToFilter = ustensilsToFilter.filter(item => item !== ustensil)
     updateRecipes();
+    console.log(ustensil)
 }
 
 function updateRecipes() {
@@ -47,7 +55,6 @@ function updateRecipes() {
     removeFiltersAppliances();
     removeFiltersUstensils();
     let reduced_filters = filterReducer(recipesToDisplay);
-    console.log(reduced_filters)
     displayIngredientsFilters(reduced_filters[0]);
     displayAppliancesFilters(reduced_filters[1]);
     displayUstensilsFilters(reduced_filters[2]);

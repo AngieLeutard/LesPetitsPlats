@@ -25,30 +25,19 @@ function displayAppliancesFilters(recipesArray) {
         appliance_list.appendChild(appliances_wrapper);
     
         appliance.addEventListener("click", () => {
-    
             updateAppliancesToFilter(selected_value);
-    
-            // select element
-            selectedSticker(appliance, appliances_wrapper, unselect);
-    
-            // create new sticker
-            createNewSticker(selected_value)
-    
-            let sticker_icon = document.querySelector(".sticker_unselect");
-    
-            sticker_icon.addEventListener("click", () => {
-                unselectedSticker(appliance, appliances_wrapper, unselect);
-                sticker.remove();
-                updateAppliancesToFilter()
-            });
-    
-            let sticker = document.querySelector(".sticker_wrapper");
-    
-            unselect.addEventListener("click", () => {
-                unselectedSticker(appliance, appliances_wrapper, unselect);
-                sticker.remove();
-                updateAppliancesToFilter()
-            });
+            createNewTag(selected_value);
         })
+
+        if(applianceToFilter.includes(selected_value)) {
+            appliances_wrapper.classList.add("link_container_selected");
+            unselect.style.display = "block";
+
+            unselect.addEventListener("click", () => {
+                removeAppliancesToFilter(selected_value)
+                let tag_wrapper = document.querySelector('[data="'+ selected_value +'"]');
+                tag_wrapper.remove()
+            })
+        }
     });
 }

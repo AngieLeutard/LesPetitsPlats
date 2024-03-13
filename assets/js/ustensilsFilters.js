@@ -25,31 +25,19 @@ function displayUstensilsFilters(recipesArray) {
         ustensils_list.appendChild(ustensils_wrapper);
     
         ustensil.addEventListener("click", () => {
-    
             updateUstensilsToFilter(selected_value);
-    
-            // select element
-            selectedSticker(ustensil, ustensils_wrapper, unselect);
-    
-            // create new sticker
-            createNewSticker(selected_value)
-    
-            // element de la list unselect
-            let sticker = document.querySelector(".sticker_wrapper");
-    
-            unselect.addEventListener("click", () => {
-                unselectedSticker(ustensil, ustensils_wrapper, unselect);
-                sticker.remove();
-                removeUstensilsToFilter(selected_value);
-            });
-    
-            let sticker_icon = document.querySelector(".sticker_unselect");
-    
-            sticker_icon.addEventListener("click", () => {
-                unselectedSticker(ustensil, ustensils_wrapper, unselect);
-                sticker.remove();
-                removeUstensilsToFilter(selected_value);
-            });
+            createNewTag(selected_value);
         })
+
+        if(ustensilsToFilter.includes(selected_value)) {
+            ustensils_wrapper.classList.add("link_container_selected");
+            unselect.style.display = "block";
+
+            unselect.addEventListener("click", () => {
+                removeUstensilsToFilter(selected_value)
+                let tag_wrapper = document.querySelector('[data="'+ selected_value +'"]');
+                tag_wrapper.remove()
+            })
+        }
     });
 }

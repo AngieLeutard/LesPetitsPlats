@@ -62,4 +62,3 @@ function filterReducer(arrayToReduce) {
 
     return [reduce_filterIngredients, reduce_filterAppliances, reduce_filterUstensils, reduce_filterNames, reduce_filterDescriptions];
 }
-

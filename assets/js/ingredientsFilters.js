@@ -25,30 +25,21 @@ function displayIngredientsFilters(recipesArray) {
         ingredients_list.appendChild(ingredients_wrapper);
     
         ingredient.addEventListener("click", () => {
-    
             updateIngredientsToFilter(selected_value);
-    
-            // select element
-            selectedSticker(ingredient, ingredients_wrapper, unselect);
-    
-            // yellow sticker
-            createNewSticker(selected_value);
-    
-            let sticker_icon = document.querySelector(".sticker_unselect");
-    
-            sticker_icon.addEventListener("click", () => {
-                unselectedSticker(ingredient, ingredients_wrapper, unselect);
-                sticker.remove();
-                removeIngredientsToFilter()
-            });
-    
-            let sticker = document.querySelector(".sticker_wrapper");
-    
-            unselect.addEventListener("click", () => {
-                unselectedSticker(ingredient, ingredients_wrapper, unselect);
-                sticker.remove(selected_value);
-                removeIngredientsToFilter(selected_value)
-            });
+            createNewTag(selected_value);
         });
+
+        if(ingredientsToFilter.includes(selected_value)) {
+            ingredients_wrapper.classList.add("link_container_selected");
+            unselect.style.display = "block";
+
+            unselect.addEventListener("click", () => {
+                removeIngredientsToFilter(selected_value)
+                let tag_wrapper = document.querySelector('[data="'+ selected_value +'"]');
+                tag_wrapper.remove()
+            })
+        }
     });
+    
+
 }
