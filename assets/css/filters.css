@@ -191,3 +191,18 @@ details[open] .textBox_wrapper {
 .sticker_unselect {
     cursor: pointer;
 }
+
+.filter_input_button {
+    display: none;
+    position: absolute;
+    bottom: 14px;
+    right: 34px;
+    border: none;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.filter_input_icon {
+    font-size: 11px;
+    color: var(--second-text-color);
+}

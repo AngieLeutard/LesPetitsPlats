@@ -40,6 +40,4 @@ function displayIngredientsFilters(recipesArray) {
             })
         }
     });
-    
-
 }
