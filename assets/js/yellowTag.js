@@ -5,7 +5,6 @@ function createNewTag(name) {
     tag_wrapper.setAttribute('data', name);
 
     let tag_dataValue = tag_wrapper.getAttribute('data');
-    console.log(tag_dataValue);
 
     let tag_text = document.createElement("p");
     tag_text.classList.add("sticker_text");

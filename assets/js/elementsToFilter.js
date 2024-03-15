@@ -32,19 +32,16 @@ function updateInputValueToFilter(inputValue) {
 function removeIngredientsToFilter(ingredient) {
     ingredientsToFilter = ingredientsToFilter.filter(item => item !== ingredient)
     updateRecipes();
-    console.log(ingredientsToFilter)
 }
 
 function removeAppliancesToFilter() {
     applianceToFilter = "";
     updateRecipes();
-    console.log(applianceToFilter)
 }
 
 function removeUstensilsToFilter(ustensil) {
     ustensilsToFilter = ustensilsToFilter.filter(item => item !== ustensil)
     updateRecipes();
-    console.log(ustensil)
 }
 
 function updateRecipes() {

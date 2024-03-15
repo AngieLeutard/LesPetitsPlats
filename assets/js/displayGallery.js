@@ -122,6 +122,8 @@ function emptyGallery(inputValue) {
 
 function removeErrorText() {
     let errorText = document.querySelector(".errorText");
-    errorText.remove()
+    if(errorText) {
+        errorText.remove()
+    }
 }
 
