@@ -41,14 +41,27 @@ function filterByIngredients(recipes, ingredientsToFilter) {
 }
 
 function filterWithInputValue(recipes, inputValue) {
-    let reduced_recipes = recipes.filter(function(recipe) {
-        return (
-            recipe.name.includes(inputValue) ||
-            recipe.description.includes(inputValue) ||
-            recipe.ingredients.some(ingredient => ingredient.ingredient.includes(inputValue))
-        );
-    });
-    return reduced_recipes;
+
+    let reduced_recipes = []
+
+    for(let i = 0; i < recipes.length; i++) {
+
+        if(recipes[i].name.toLowerCase().includes(inputValue)) {
+            reduced_recipes.push(recipes[i]);
+            continue;
+        }
+        if(recipes[i].description.toLowerCase().includes(inputValue)) {
+            reduced_recipes.push(recipes[i]);
+            continue;
+        }
+        for (let y = 0; y < recipes[i].ingredients.length; y++) { 
+            if(recipes[i].ingredients[y].ingredient.toLowerCase().includes(inputValue)) {
+                reduced_recipes.push(recipes[i]);
+            }
+        }
+    }
+
+    return reduced_recipes
 }
 
 function filterRecipes(recipes, ingredients, appliance, ustensils, inputValue) {
