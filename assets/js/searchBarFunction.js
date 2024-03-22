@@ -8,6 +8,24 @@ let general_input_searchBar_value = "";
 
 general_input_searchBar.addEventListener("change", (e) => {
     general_input_searchBar_value = e.target.value;
+    general_input_searchBar.value = general_input_searchBar_value;
+});
+
+general_input_searchBar.addEventListener('input', () => {
+    if (general_input_searchBar.value.length >= 3) {
+        removeFiltersIngredients()
+        removeFiltersAppliances()
+        removeFiltersUstensils()
+
+        updateInputValueToFilter(general_input_searchBar.value);
+    }
+    if (general_input_searchBar.value == ""){
+        removeFiltersIngredients()
+        removeFiltersAppliances()
+        removeFiltersUstensils()
+
+        updateInputValueToFilter(general_input_searchBar.value);
+    }
 });
 
 general_input_searchBar.addEventListener("click", () => {
@@ -39,7 +57,7 @@ function changeAutoComplete({ target }) {
     if (data.length >= 3) {
         let autoCompleteValues = autoComplete(data);
         autoCompleteValues.forEach(value => { addItem(value); });
-        general_ul_searchBar.classList.add("suggestions_wrapper_bg")
+        general_ul_searchBar.classList.add("suggestions_wrapper_bg");
     } else {
         general_ul_searchBar.classList.remove("suggestions_wrapper_bg");
         general_input_searchBar_x_button.style.display = "none";
